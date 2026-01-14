@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "kill": "kill $(lsof -t -i:3000)",
+    "kill:3000": "kill $(lsof -t -i:3000)"
   },
   "dependencies": {
     "@prisma/client": "^6.19.2",
