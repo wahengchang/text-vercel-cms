@@ -42,6 +42,12 @@ export default async function AdminWelcomePage() {
           ))}
         </div>
         <div className="flex flex-col gap-3 sm:flex-row">
+          <Link
+            className="rounded-full border border-zinc-700 px-5 py-2 text-center text-sm font-semibold text-zinc-100 hover:border-zinc-500"
+            href="/admin/posts"
+          >
+            Manage posts
+          </Link>
           <button className="rounded-full bg-white px-5 py-2 text-sm font-semibold text-zinc-950">
             View activity log
           </button>

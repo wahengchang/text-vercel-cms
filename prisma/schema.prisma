@@ -1,0 +1,36 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("PRISMA_DATABASE_URL")
+  directUrl = env("POSTGRES_PRISMA_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Post {
+  id         String   @id @default(cuid())
+  title      String
+  slug       String   @unique
+  content    String
+  coverImage String?
+  published  Boolean  @default(false)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  category   Category? @relation(fields: [categoryId], references: [id])
+  categoryId String?
+  tags       Tag[]
+}
+
+model Category {
+  id    String @id @default(cuid())
+  name  String
+  posts Post[]
+}
+
+model Tag {
+  id    String @id @default(cuid())
+  name  String
+  posts Post[]
+}
